@@ -10,29 +10,34 @@ const Directory = () => {
       {
         id:1,
         title:'HATS',
-        imageurl:'https://via.placeholder.com/500',
-        subtitle:'SHOP NOW'
+        imageurl:'https://i.ibb.co/cvpntL1/hats.png',
+        subtitle:'SHOP NOW',
+        linkUrl:'shop/hats',
       },{
         id:1,
         title:'JACKETS',
-        imageurl:'https://via.placeholder.com/500',
-        subtitle:'SHOP NOW'
+        imageurl:'https://i.ibb.co/px2tCc3/jackets.png',
+        subtitle:'SHOP NOW',
+        linkUrl:'shop/jackets',
       },{
         id:1,
         title:'SNEAKERS',
-        imageurl:'https://via.placeholder.com/500',
+        imageurl:'https://i.ibb.co/0jqHpnp/sneakers.png',
+        linkUrl:'shop/sneakers',
         subtitle:'SHOP NOW'
       },{
         id:1,
         title:'WOMENS',
-        imageurl:'https://via.placeholder.com/500',
+        imageurl:'https://i.ibb.co/GCCdy8t/womens.png',
         size:'large',
+        linkUrl:'shop/womens',
         subtitle:'SHOP NOW'
       },{
         id:1,
         title:'MENS',
-        imageurl:'https://via.placeholder.com/500',
+        imageurl:'https://i.ibb.co/R70vBrQ/men.png',
         size:'large',
+        linkUrl:'shop/mens',
         subtitle:'SHOP NOW'
       },
     ]);
@@ -40,9 +45,9 @@ const Directory = () => {
 
   return (
     <div className="directory-menu">
-      {section.map(({id,title,subtitle,imageurl,size}) => {
+      {section.map(({id,...otherSectionProps}) => {
         return (
-        <MenuItem key={id} title={title} subtitle={subtitle} imageurl={imageurl} size={size} />
+        <MenuItem key={id} {...otherSectionProps} />
         );
       })}
     </div>
