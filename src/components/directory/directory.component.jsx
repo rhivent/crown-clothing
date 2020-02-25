@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuItem from '../menu-item/menu-item.component';
 import './directory.styles.scss';
+import generateAlphaNum from '../../helpers/genAlphaNum';
 
 const Directory = () => {
   const [section,setSection] = React.useState([]);
@@ -47,7 +48,7 @@ const Directory = () => {
     <div className="directory-menu">
       {section.map(({id,...otherSectionProps}) => {
         return (
-        <MenuItem key={id} {...otherSectionProps} />
+        <MenuItem key={generateAlphaNum(7)} {...otherSectionProps} />
         );
       })}
     </div>
