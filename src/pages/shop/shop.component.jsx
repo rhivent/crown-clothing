@@ -6,15 +6,15 @@ const ShopPage = (props) => {
   const [collections,setcollections] = React.useState(SHOP_DATA);
 
   return (
-    <div className="shop-page">
-      {
-        collections.map(({id,...otherCollectionProps}) => {
-          return (
-            <CollectionPreview key={id} {...otherCollectionProps} />
-          )
-        })
-      }
-    </div>
+  <div className="shop-page">
+    {
+      collections.map(({id,...otherCollectionProps}) => {
+        return (
+          <CollectionPreview key={id} {...otherCollectionProps} />
+        )
+      })
+    }
+  </div>
   );
 }
 
