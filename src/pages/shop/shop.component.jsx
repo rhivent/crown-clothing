@@ -12,9 +12,9 @@ const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 const ShopPage = ({match,updateCollections}) => {
   const [loading,setLoading] = React.useState(true);
-  let unsubscribeFromSnapshot = React.useRef();
-
+  
   React.useEffect(() =>{
+    let unsubscribeFromSnapshot = null;
     const collectionRef = firestore.collection('collections');
 
     unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
@@ -22,7 +22,9 @@ const ShopPage = ({match,updateCollections}) => {
       updateCollections(collectionsMap);
       setLoading(false);
     });
-  },[]);
+
+    return () => unsubscribeFromSnapshot();
+  },[updateCollections]);
 
   return (
   <div className="shop-page">
