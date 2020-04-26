@@ -12,6 +12,9 @@ const config = {
   appId: "1:344357820829:web:25375a084ac97c614f3774"
 };
 
+// Initialize Firebase
+firebase.initializeApp(config);
+
 export const createUserProfileDocument = async (userAuth,additionalData) => {
   if(!userAuth) return;
 
@@ -38,8 +41,18 @@ export const createUserProfileDocument = async (userAuth,additionalData) => {
   return userRef;
 } 
 
-// Initialize Firebase
-firebase.initializeApp(config);
+export const addCollectionAndDocument = async (collectionKey,objectsToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+  console.log(collectionRef);
+
+  const batch = firestore.batch();
+  objectsToAdd.forEach(obj => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef,obj);
+  });
+
+  return await batch.commit();
+}
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
