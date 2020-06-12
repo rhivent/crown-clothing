@@ -7,5 +7,4 @@ const generateAlphaNum = (length) => {
   }
   return result;
 }
-
 export default generateAlphaNum;
